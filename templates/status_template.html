@@ -1,0 +1,36 @@
+<html>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+
+<body>
+<h3>IP Map</h3>
+<table>
+    <tr>
+        <th>IP Address</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Host Name</th>
+        <th>MAC Address</th>
+        <th>Jenkins Enabled</th>
+    <tr>
+
+{% for relay in data%}
+<tr>    
+    {% for value in data[relay].items()%}
+        {% if value[0] == "IP"%}
+            <td>{{value[1]}}</td>>
+        {% endif %}
+    {% endfor %}
+    {% for value in data[relay].items() %}
+        {% if value[0] != "IP"%}
+            <td>{{value[1]}}</td>
+        {% endif %}
+    {% endfor %}
+<tr>
+{% endfor %}
+</table>
+</body>
+</html>  
